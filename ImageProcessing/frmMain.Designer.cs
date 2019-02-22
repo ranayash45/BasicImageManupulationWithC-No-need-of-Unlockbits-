@@ -38,6 +38,7 @@
             this.laplasianToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageSmoothingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highBoostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frmImage)).BeginInit();
@@ -97,7 +98,8 @@
             this.laplasianToolStripMenuItem,
             this.laplasianToolStripMenuItem1,
             this.imageSmoothingToolStripMenuItem,
-            this.inverseToolStripMenuItem});
+            this.inverseToolStripMenuItem,
+            this.highBoostToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
             this.filtersToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.filtersToolStripMenuItem.Text = "Filters";
@@ -130,6 +132,13 @@
             this.inverseToolStripMenuItem.Text = "Inverse";
             this.inverseToolStripMenuItem.Click += new System.EventHandler(this.inverseToolStripMenuItem_Click);
             // 
+            // highBoostToolStripMenuItem
+            // 
+            this.highBoostToolStripMenuItem.Name = "highBoostToolStripMenuItem";
+            this.highBoostToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.highBoostToolStripMenuItem.Text = "HighBoost";
+            this.highBoostToolStripMenuItem.Click += new System.EventHandler(this.highBoostToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +170,7 @@
         private System.Windows.Forms.ToolStripMenuItem laplasianToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem imageSmoothingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inverseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highBoostToolStripMenuItem;
     }
 }
 

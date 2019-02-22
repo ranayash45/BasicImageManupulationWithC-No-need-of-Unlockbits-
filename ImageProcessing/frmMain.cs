@@ -93,8 +93,12 @@ namespace ImageProcessing
             {
                 for(int j = 1; j < frmImage.Width - 2;j++)
                 {
-                    temp = ( Math.Abs((ImagaData[i, j]->Red * 4)+(-1*ImagaData[i - 1, j]->Red + -1 * ImagaData[i + 1, j]->Red + -1 * ImagaData[i, j - 1]->Red + -1 * ImagaData[i, j + 1]->Red)));
-                    if(temp>255)
+                    temp = (((ImagaData[i, j]->Red * 4)+(-1*ImagaData[i - 1, j]->Red + -1 * ImagaData[i + 1, j]->Red + -1 * ImagaData[i, j - 1]->Red + -1 * ImagaData[i, j + 1]->Red)));
+                    if (temp < 0)
+                    {
+                        temp = 0;
+                    }
+                    if (temp>255)
                     {
                         temp = 255;
                     }
@@ -165,6 +169,69 @@ namespace ImageProcessing
             }
 
             frmImage.Refresh();
+        }
+
+        private void highBoostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte[,] rpixelValue = new byte[frmImage.Height, frmImage.Width];
+            byte[,] gpixelValue = new byte[frmImage.Height, frmImage.Width];
+            byte[,] bpixelValue = new byte[frmImage.Height, frmImage.Width];
+            double temp;
+            for (int i = 1; i < frmImage.Height - 2; i++)
+            {
+                for (int j = 1; j < frmImage.Width - 2; j++)
+                {
+                    temp = (((ImagaData[i, j]->Red * 5.2) + (-1 * ImagaData[i - 1, j]->Red + -1 * ImagaData[i + 1, j]->Red + -1 * ImagaData[i, j - 1]->Red + -1 * ImagaData[i, j + 1]->Red)));
+                    if(temp < 0)
+                    {
+                        temp = 0;
+                    }
+                    if (temp > 255)
+                    {
+                        temp = 255;
+                    }
+
+                    rpixelValue[i, j] = Convert.ToByte(temp);
+
+                    temp = (((ImagaData[i, j]->Green * 5.2) + (-1 * ImagaData[i - 1, j]->Green + -1 * ImagaData[i + 1, j]->Green + -1 * ImagaData[i, j - 1]->Green + -1 * ImagaData[i, j + 1]->Green)));
+                    if (temp < 0)
+                    {
+                        temp = 0;
+                    }
+                    if (temp > 255)
+                    {
+                        temp = 255;
+                    }
+
+                    gpixelValue[i, j] = Convert.ToByte(temp);
+
+                    temp = (((ImagaData[i, j]->Blue * 5.2) + (-1 * ImagaData[i - 1, j]->Blue + -1 * ImagaData[i + 1, j]->Blue + -1 * ImagaData[i, j - 1]->Blue + -1 * ImagaData[i, j + 1]->Blue)));
+                    if (temp < 0)
+                    {
+                        temp = 0;
+                    }
+                    if (temp > 255)
+                    {
+                        temp = 255;
+                    }
+
+                    bpixelValue[i, j] = Convert.ToByte(temp);
+
+
+                }
+            }
+            for (int i = 1; i < frmImage.Height - 2; i++)
+            {
+                for (int j = 1; j < frmImage.Width - 2; j++)
+                {
+                    ImagaData[i, j]->Red = rpixelValue[i, j];
+                    ImagaData[i, j]->Green = gpixelValue[i, j];
+                    ImagaData[i, j]->Blue = bpixelValue[i, j];
+
+                }
+            }
+            frmImage.Refresh();
+
         }
     }
 }
